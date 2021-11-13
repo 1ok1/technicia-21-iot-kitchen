@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "880577060204",
+    "project_id": "iot-kitchen-technicia-21",
+    "storage_bucket": "iot-kitchen-technicia-21.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:880577060204:android:87ad6873214f6a932e6749",
+        "android_client_info": {
+          "package_name": "com.technichia.iot.kitchen.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "880577060204-407mla77cgnk961e7mfa3109opnt2l2h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9VYPuSdOBc8__dP-pIAoLUgC7cFc-K9Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "880577060204-407mla77cgnk961e7mfa3109opnt2l2h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
