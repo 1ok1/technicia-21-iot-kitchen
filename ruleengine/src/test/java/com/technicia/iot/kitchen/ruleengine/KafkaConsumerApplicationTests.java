@@ -1,4 +1,4 @@
-package com.technicia.iot.kitchen.simulator;
+package com.technicia.iot.kitchen.ruleengine;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class KafkaPublisherApplicationTests {
+public class KafkaConsumerApplicationTests {
 
 	@Test
 	public void contextLoads() {

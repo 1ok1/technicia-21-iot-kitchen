@@ -1,4 +1,4 @@
-package com.technicia.iot.kitchen.simulator;
+package com.technicia.iot.kitchen.ruleengine;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
