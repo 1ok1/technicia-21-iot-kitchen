@@ -31,9 +31,9 @@ class ProductListingFragment : Fragment() {
         // the image with the count of view
         data.add(Product(R.mipmap.cyclinder, "Gas Cylinder", "17.6 Kg", "1 kg", true))
         data.add(Product(R.mipmap.daal, "Daal", "1Kg", "100gm",true))
-        data.add(Product(R.mipmap.horlicks, "Horlicks", "1Kg", "500gm",false))
+        data.add(Product(R.mipmap.horlicks, "Horlicks", "1Kg", "1kg",false))
         data.add(Product(R.mipmap.oil, "Oil", "1L", "100ml",true))
-        data.add(Product(R.mipmap.wheat, "Wheat Flour", "5Kg", "2Kg",false))
+        data.add(Product(R.mipmap.wheat, "Wheat Flour", "5Kg", "7Kg",false))
 
         // This will pass the ArrayList to our Adapter
         val adapter = CustomAdapter(data)

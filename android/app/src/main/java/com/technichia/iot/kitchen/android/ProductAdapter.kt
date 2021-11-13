@@ -32,12 +32,12 @@ class CustomAdapter(private val mList: List<Product>) : RecyclerView.Adapter<Cus
 
         // sets the text to the textview from our itemHolder class
         holder.name.text = productList.name
-        holder.quantity.text = productList.quantity
-        holder.avail_quantity.text = productList.avail_quantity
+        holder.quantity.text = "Min Required: ${productList.quantity}"
+        holder.avail_quantity.text = "Available: ${productList.avail_quantity}"
         if (productList.shouldTakeAction)
             holder.avail_quantity.setTextColor("#FF0000".toColorInt())
         else
-            holder.avail_quantity.setTextColor("#808080".toColorInt())
+            holder.avail_quantity.setTextColor("#008000".toColorInt())
     }
 
     // return the number of the items in the list
