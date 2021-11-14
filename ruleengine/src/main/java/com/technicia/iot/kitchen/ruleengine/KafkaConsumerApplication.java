@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.technicia.iot.kitchen.ruleengine.config.GroceryMessageService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -15,6 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class KafkaConsumerApplication {
 
 	List<Message> messages = new ArrayList<>();
+
+	@Autowired
+	GroceryMessageService groceryMessageService;
 
 	@GetMapping("/ping")
 	public String ping() {
@@ -29,6 +34,8 @@ public class KafkaConsumerApplication {
 		try {
 			Message message = objectMapper.readValue(data, Message.class);
 			messages.add(message);
+			groceryMessageService.saveMessage(message);
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
