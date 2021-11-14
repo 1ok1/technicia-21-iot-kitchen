@@ -3,12 +3,12 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.example</groupId>
-	<artifactId>kafka-publisher</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<groupId>com.technicia.iot.kitchen.simulator</groupId>
+	<artifactId>simulator</artifactId>
+	<version>0.0.1</version>
 	<packaging>jar</packaging>
 
-	<name>kafka-publisher</name>
+	<name>simulator</name>
 	<description>Publish message using kafka</description>
 
 	<parent>
