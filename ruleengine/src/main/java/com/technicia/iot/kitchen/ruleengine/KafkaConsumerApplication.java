@@ -17,17 +17,18 @@ public class KafkaConsumerApplication {
 
 	User userFromTopic = null;
 
-	@KafkaListener(groupId = "special-1", topics = {"grocerystream"}, containerFactory = "kafkaListenerContainerFactory")
+	@KafkaListener(groupId = "grocerystream-1", topics = {"grocerystream"}, containerFactory = "kafkaListenerContainerFactory")
 	public List<String> getMsgFromTopic(String data) {
+		System.out.println(data);
 		messages.add(data);
 		return messages;
 	}
 
-	@KafkaListener(groupId = "special-2", topics = {"grocerystream"}, containerFactory = "userKafkaListenerContainerFactory")
-	public User getJsonMsgFromTopic(User user) {
-		userFromTopic = user;
-		return userFromTopic;
-	}
+//	@KafkaListener(groupId = "grocerystream-1", topics = {"grocerystream"}, containerFactory = "userKafkaListenerContainerFactory")
+//	public User getJsonMsgFromTopic(User user) {
+//		userFromTopic = user;
+//		return userFromTopic;
+//	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(KafkaConsumerApplication.class, args);

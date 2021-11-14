@@ -27,7 +27,7 @@ public class KafkaConsumerConfig {
 		configs.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
 		configs.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
 		configs.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
-		configs.put(ConsumerConfig.GROUP_ID_CONFIG, "special-1");
+		configs.put(ConsumerConfig.GROUP_ID_CONFIG, "grocerystream-1");
 		configs.put(ProducerConfig.REQUEST_TIMEOUT_MS_CONFIG, 20000);
 		return new DefaultKafkaConsumerFactory<>(configs);
 	}
@@ -41,22 +41,22 @@ public class KafkaConsumerConfig {
 
 	// config for json data
 
-	@Bean
-	public ConsumerFactory<String, User> userConsumerFactory() {
-		Map<String, Object> configs = new HashMap<>();
-		configs.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
-		configs.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
-		configs.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
-		configs.put(ConsumerConfig.GROUP_ID_CONFIG, "special-2");
-		configs.put(ProducerConfig.REQUEST_TIMEOUT_MS_CONFIG, 20000);
-		return new DefaultKafkaConsumerFactory<>(configs, new StringDeserializer(), new JsonDeserializer<>(User.class));
-	}
-
-	@Bean
-	public ConcurrentKafkaListenerContainerFactory<String, User> userKafkaListenerContainerFactory() {
-		ConcurrentKafkaListenerContainerFactory<String, User> factory = new ConcurrentKafkaListenerContainerFactory<String, User>();
-		factory.setConsumerFactory(userConsumerFactory());
-		return factory;
-	}
+//	@Bean
+//	public ConsumerFactory<String, User> userConsumerFactory() {
+//		Map<String, Object> configs = new HashMap<>();
+//		configs.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+//		configs.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
+//		configs.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
+//		configs.put(ConsumerConfig.GROUP_ID_CONFIG, "grocerystream-1");
+//		configs.put(ProducerConfig.REQUEST_TIMEOUT_MS_CONFIG, 20000);
+//		return new DefaultKafkaConsumerFactory<>(configs, new StringDeserializer(), new JsonDeserializer<>(User.class));
+//	}
+//
+//	@Bean
+//	public ConcurrentKafkaListenerContainerFactory<String, User> userKafkaListenerContainerFactory() {
+//		ConcurrentKafkaListenerContainerFactory<String, User> factory = new ConcurrentKafkaListenerContainerFactory<String, User>();
+//		factory.setConsumerFactory(userConsumerFactory());
+//		return factory;
+//	}
 
 }

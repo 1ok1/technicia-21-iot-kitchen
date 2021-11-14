@@ -33,7 +33,7 @@ public class KafkaPublisherApplication {
 		return "Json Data published";
 	}
 
-	//@Scheduled(fixedDelay = 10000)
+	@Scheduled(fixedDelay = 10000)
 	public void sendRandomData() {
 		User user = new User(2532, "User88", new String[] { "Bangalore", "BTM", "house 90" });
 		template.send(topic, user);
