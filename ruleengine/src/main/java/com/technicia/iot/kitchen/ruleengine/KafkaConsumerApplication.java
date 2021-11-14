@@ -3,6 +3,7 @@ package com.technicia.iot.kitchen.ruleengine;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -13,22 +14,27 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class KafkaConsumerApplication {
 
-	List<String> messages = new ArrayList<>();
+	List<Message> messages = new ArrayList<>();
 
-	User userFromTopic = null;
-
-	@KafkaListener(groupId = "grocerystream-1", topics = {"grocerystream"}, containerFactory = "kafkaListenerContainerFactory")
-	public List<String> getMsgFromTopic(String data) {
-		System.out.println(data);
-		messages.add(data);
-		return messages;
+	@GetMapping("/ping")
+	public String ping() {
+		return "pong";
 	}
 
-//	@KafkaListener(groupId = "grocerystream-1", topics = {"grocerystream"}, containerFactory = "userKafkaListenerContainerFactory")
-//	public User getJsonMsgFromTopic(User user) {
-//		userFromTopic = user;
-//		return userFromTopic;
-//	}
+	@KafkaListener(groupId = "grocerystream-1", topics = {"grocerystream"}, containerFactory = "kafkaListenerContainerFactory")
+	public List<Message> getMsgFromTopic(String data) {
+
+		ObjectMapper objectMapper = new ObjectMapper();
+
+		try {
+			Message message = objectMapper.readValue(data, Message.class);
+			messages.add(message);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println(data);
+		return messages;
+	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(KafkaConsumerApplication.class, args);

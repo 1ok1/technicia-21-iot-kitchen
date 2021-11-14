@@ -3,7 +3,6 @@ package com.technicia.iot.kitchen.ruleengine.config;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.technicia.iot.kitchen.ruleengine.User;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
@@ -13,13 +12,10 @@ import org.springframework.kafka.annotation.EnableKafka;
 import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory;
 import org.springframework.kafka.core.ConsumerFactory;
 import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
-import org.springframework.kafka.support.serializer.JsonDeserializer;
 
 @Configuration
 @EnableKafka
 public class KafkaConsumerConfig {
-
-	// config for String plain text
 
 	@Bean
 	public ConsumerFactory<String, String> consumerFactory() {
@@ -38,25 +34,4 @@ public class KafkaConsumerConfig {
 		factory.setConsumerFactory(consumerFactory());
 		return factory;
 	}
-
-	// config for json data
-
-//	@Bean
-//	public ConsumerFactory<String, User> userConsumerFactory() {
-//		Map<String, Object> configs = new HashMap<>();
-//		configs.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
-//		configs.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
-//		configs.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
-//		configs.put(ConsumerConfig.GROUP_ID_CONFIG, "grocerystream-1");
-//		configs.put(ProducerConfig.REQUEST_TIMEOUT_MS_CONFIG, 20000);
-//		return new DefaultKafkaConsumerFactory<>(configs, new StringDeserializer(), new JsonDeserializer<>(User.class));
-//	}
-//
-//	@Bean
-//	public ConcurrentKafkaListenerContainerFactory<String, User> userKafkaListenerContainerFactory() {
-//		ConcurrentKafkaListenerContainerFactory<String, User> factory = new ConcurrentKafkaListenerContainerFactory<String, User>();
-//		factory.setConsumerFactory(userConsumerFactory());
-//		return factory;
-//	}
-
 }

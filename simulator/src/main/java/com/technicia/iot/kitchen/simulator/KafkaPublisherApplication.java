@@ -20,23 +20,26 @@ public class KafkaPublisherApplication {
 
 	private String topic = "grocerystream";
 
-	@GetMapping("/publish/{name}")
-	public String publishMessage(@PathVariable String name) {
-		template.send(topic, "Hi " + name + " Welcome to java techie");
-		return "Data published";
+	@GetMapping("/ping")
+	public String ping() {
+		return "pong";
 	}
 
-	@GetMapping("/publishJson")
-	public String publishMessage() {
-		User user = new User(2532, "User88", new String[] { "Bangalore", "BTM", "house 90" });
-		template.send(topic, user);
+	@GetMapping("/testPublish")
+	public String testPublish() {
+		Message message = new Message(-1, 1, 1);
+		template.send(topic, message);
 		return "Json Data published";
 	}
 
 	@Scheduled(fixedDelay = 10000)
 	public void sendRandomData() {
-		User user = new User(2532, "User88", new String[] { "Bangalore", "BTM", "house 90" });
-		template.send(topic, user);
+		Message message = new Message(2352, getGroceryId(1, 3), 1);
+		template.send(topic, message);
+	}
+
+	public int getGroceryId(int min, int max) {
+		return (int) ((Math.random() * (max - min)) + min);
 	}
 
 	public static void main(String[] args) {
