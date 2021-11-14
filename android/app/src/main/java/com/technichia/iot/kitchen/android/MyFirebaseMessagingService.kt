@@ -69,8 +69,9 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
     }
 
     private fun handleNow(remoteMessage: RemoteMessage) {
+        Log.d(TAG, "Notification data: ${remoteMessage.data}")
+        Log.d(TAG, "Notification notification: ${remoteMessage.notification}")
             remoteMessage.notification?.let {
-                Log.d(TAG, "Notification data: ${remoteMessage.data}")
                 getNotificationManager(
                     getNotificationBuilder(it.title, it.body)
                 )

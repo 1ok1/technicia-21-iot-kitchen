@@ -1,0 +1,6 @@
+**/*
+!**/*.go
+!**/go.*
+!**/Dockerfile
+!**/.gitignore
+!**/
