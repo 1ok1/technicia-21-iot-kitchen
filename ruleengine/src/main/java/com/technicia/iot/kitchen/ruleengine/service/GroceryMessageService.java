@@ -25,7 +25,7 @@ public class GroceryMessageService {
 
     public void saveMessage(Message message) {
         com.technicia.iot.kitchen.ruleengine.model.Message messageModel = new com.technicia.iot.kitchen.ruleengine.model.Message();
-        messageModel.setAvailableQuantity(50);
+        messageModel.setAvailableQuantity(message.getQuantity());
         messageModel.setUserId(message.getUserId());
         messageModel.setGroceryId(message.getGroceryId());
         messageRepository.save(messageModel);

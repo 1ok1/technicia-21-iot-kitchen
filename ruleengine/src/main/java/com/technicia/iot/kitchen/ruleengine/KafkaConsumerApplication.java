@@ -4,14 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.technicia.iot.kitchen.ruleengine.config.GroceryMessageService;
+import com.technicia.iot.kitchen.ruleengine.service.GroceryMessageService;
+import com.technicia.iot.kitchen.ruleengine.service.NotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@EnableScheduling
 @SpringBootApplication
 @RestController
 public class KafkaConsumerApplication {
@@ -20,6 +24,9 @@ public class KafkaConsumerApplication {
 
 	@Autowired
 	GroceryMessageService groceryMessageService;
+
+	@Autowired
+	NotificationService notificationService;
 
 	@GetMapping("/ping")
 	public String ping() {
@@ -41,6 +48,11 @@ public class KafkaConsumerApplication {
 		}
 		System.out.println(data);
 		return messages;
+	}
+
+	@Scheduled(fixedDelay = 10000)
+	private void notifyCurrentStatus() {
+		notificationService.checkAndNotifyGroceriesStatus();
 	}
 
 	public static void main(String[] args) {

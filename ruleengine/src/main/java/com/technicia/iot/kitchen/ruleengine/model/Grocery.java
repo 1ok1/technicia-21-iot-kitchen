@@ -9,23 +9,23 @@ public class Grocery {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "ID")
 	private int id;
 
 	@Column(name = "NAME")
 	private String name;
 
-	@Column(name = "TYPE")
-	private String type;
+	@ManyToOne
+	@JoinColumn(name = "GROCERY_TYPE")
+	private GroceryType type;
 
-	@Column(name = "LIMIT")
+	@Column(name = "GROCERY_LIMIT")
 	private int limit;
 
 	public Grocery() {
 
 	}
 
-	public Grocery(int id, String name, String type, int limit) {
+	public Grocery(int id, String name, GroceryType type, int limit) {
 		this.id = id;
 		this.name = name;
 		this.type = type;
@@ -48,11 +48,11 @@ public class Grocery {
 		this.name = name;
 	}
 
-	public String getType() {
+	public GroceryType getType() {
 		return type;
 	}
 
-	public void setType(String type) {
+	public void setType(GroceryType type) {
 		this.type = type;
 	}
 

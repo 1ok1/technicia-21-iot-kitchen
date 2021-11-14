@@ -31,9 +31,9 @@ public class KafkaPublisherApplication {
 		return "Json Data published";
 	}
 
-	@Scheduled(fixedDelay = 10000)
+	@Scheduled(fixedDelay = 20000)
 	public void sendRandomData() {
-		Message message = new Message(2352, getGroceryId(1, 3), 1);
+		Message message = new Message(2352, getGroceryId(11, 14), 1);
 		template.send(topic, message);
 	}
 

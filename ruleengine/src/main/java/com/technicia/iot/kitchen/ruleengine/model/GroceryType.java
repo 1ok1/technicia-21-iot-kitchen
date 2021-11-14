@@ -13,12 +13,12 @@ public class GroceryType {
     private String type;
 
     @Column(name = "UNIT")
-    private int unit;
+    private String unit;
 
     public GroceryType() {
     }
 
-    public GroceryType(Long id, String type, int unit) {
+    public GroceryType(Long id, String type, String unit) {
         this.id = id;
         this.type = type;
         this.unit = unit;
@@ -40,11 +40,11 @@ public class GroceryType {
         this.type = type;
     }
 
-    public int getUnit() {
+    public String getUnit() {
         return unit;
     }
 
-    public void setUnit(int unit) {
+    public void setUnit(String unit) {
         this.unit = unit;
     }
 }
