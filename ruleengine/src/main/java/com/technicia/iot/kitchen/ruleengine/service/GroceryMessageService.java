@@ -1,4 +1,4 @@
-package com.technicia.iot.kitchen.ruleengine.config;
+package com.technicia.iot.kitchen.ruleengine.service;
 
 import com.technicia.iot.kitchen.ruleengine.Message;
 import com.technicia.iot.kitchen.ruleengine.model.Grocery;
