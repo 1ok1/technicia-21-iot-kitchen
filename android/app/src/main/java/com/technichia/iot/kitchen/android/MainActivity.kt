@@ -34,6 +34,14 @@ class MainActivity : AppCompatActivity() {
         val navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main)
         appBarConfiguration = AppBarConfiguration.Builder(navController.graph).build()
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration!!)
+        FirebaseMessaging.getInstance().token.addOnCompleteListener {
+            if (!it.isSuccessful) {
+                return@addOnCompleteListener
+            }
+
+            val token = it.result
+            Log.d(TAG, "Notification Refreshed token: $token")
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {
