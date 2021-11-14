@@ -29,8 +29,22 @@ services:
       - zookeeper
   notification:
     build: notification/.
+    container_name: notification
+    restart: always
     ports: 
       - "8080:8080"
+  simulator:
+    build: simulator/.
+    container_name: simulator
+    restart: always
+    ports: 
+      - "8081:8081"
+  ruleengine:
+    build: ruleengine/.
+    container_name: ruleengine
+    restart: always
+    ports: 
+      - "8082:8082"
 
 volumes:
   zookeeper_data:
