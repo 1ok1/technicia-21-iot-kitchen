@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.technicia.iot.kitchen.ruleengine.User;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
+import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,7 +27,8 @@ public class KafkaConsumerConfig {
 		configs.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
 		configs.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
 		configs.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
-		configs.put(ConsumerConfig.GROUP_ID_CONFIG, "grocerystream-1");
+		configs.put(ConsumerConfig.GROUP_ID_CONFIG, "special-1");
+		configs.put(ProducerConfig.REQUEST_TIMEOUT_MS_CONFIG, 20000);
 		return new DefaultKafkaConsumerFactory<>(configs);
 	}
 
@@ -45,7 +47,8 @@ public class KafkaConsumerConfig {
 		configs.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
 		configs.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
 		configs.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
-		configs.put(ConsumerConfig.GROUP_ID_CONFIG, "grocerystream-2");
+		configs.put(ConsumerConfig.GROUP_ID_CONFIG, "special-2");
+		configs.put(ProducerConfig.REQUEST_TIMEOUT_MS_CONFIG, 20000);
 		return new DefaultKafkaConsumerFactory<>(configs, new StringDeserializer(), new JsonDeserializer<>(User.class));
 	}
 

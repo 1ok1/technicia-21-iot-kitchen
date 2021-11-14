@@ -17,23 +17,13 @@ public class KafkaConsumerApplication {
 
 	User userFromTopic = null;
 
-	@GetMapping("/consumeStringMessage")
-	public List<String> consumeMsg() {
-		return messages;
-	}
-
-	@GetMapping("/consumeJsonMessage")
-	public User consumeJsonMessage() {
-		return userFromTopic;
-	}
-
-	@KafkaListener(groupId = "grocerystream-1", topics = "grocerystream", containerFactory = "kafkaListenerContainerFactory")
+	@KafkaListener(groupId = "special-1", topics = {"grocerystream"}, containerFactory = "kafkaListenerContainerFactory")
 	public List<String> getMsgFromTopic(String data) {
 		messages.add(data);
 		return messages;
 	}
 
-	@KafkaListener(groupId = "grocerystream-2", topics = "grocerystream", containerFactory = "userKafkaListenerContainerFactory")
+	@KafkaListener(groupId = "special-2", topics = {"grocerystream"}, containerFactory = "userKafkaListenerContainerFactory")
 	public User getJsonMsgFromTopic(User user) {
 		userFromTopic = user;
 		return userFromTopic;
