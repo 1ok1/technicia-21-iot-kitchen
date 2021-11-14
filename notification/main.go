@@ -12,7 +12,8 @@ func main() {
 
 	v1 := router.Group(baseURL)
 	{
-		v1.POST("/push-notification", SendGMToClient)
+		v1.POST("/notification", SendGMToClient)
+		v1.POST("/notification/batch", SendGMToMultipleClient)
 	}
 
 	router.Run(":8080")
