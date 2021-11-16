@@ -3,13 +3,24 @@ package com.technicia.iot.kitchen.ruleengine.model;
 
 public class NotificationMessage {
     private String title;
+    private String token;
 
     public NotificationMessage() {
+
     }
 
-    public NotificationMessage(String title, String body) {
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public NotificationMessage(String title, String body, String token) {
         this.title = title;
         this.body = body;
+        this.token = token;
     }
 
     public String getTitle() {

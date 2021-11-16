@@ -11,5 +11,4 @@ public class Message {
 	private Integer userId;
 	private Integer groceryId;
 	private Integer quantity;
-
 }

@@ -16,7 +16,6 @@ public class KafkaPublisherApplication {
 
 	@Autowired
 	private KafkaTemplate<String, Object> template;
-
 	private String topic = "grocerystream";
 
 	@GetMapping("/ping")
@@ -34,6 +33,7 @@ public class KafkaPublisherApplication {
 	@Scheduled(fixedDelay = 20000)
 	public void sendRandomData() {
 		Message message = new Message(2352, getGroceryId(11, 14), 1);
+		System.out.println("Streaming from simulator " + message);
 		template.send(topic, message);
 	}
 
